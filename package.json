@@ -1,0 +1,29 @@
+{
+  "name": "storage-emitter",
+  "description": "emit messages between browser tabs",
+  "repository": "git://github.com/alekseykulikov/storage-emitter.git",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "storage",
+    "onstorage",
+    "emitter",
+    "localstorage",
+    "eventemitter"
+  ],
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "browserify-test",
+    "development": "browserify-test --watch"
+  },
+  "dependencies": {
+    "component-emitter": "^1.2.0"
+  },
+  "devDependencies": {
+    "browserify-test": "^1.3.0",
+    "chai": "^3.1.0"
+  }
+}
