@@ -1,8 +1,6 @@
 # storage-emitter
 
 [![](https://img.shields.io/npm/v/storage-emitter.svg)](https://npmjs.org/package/storage-emitter)
-[![](https://img.shields.io/travis/alekseykulikov/storage-emitter.svg)](https://travis-ci.org/alekseykulikov/storage-emitter)
-[![](http://img.shields.io/npm/dm/storage-emitter.svg)](https://npmjs.org/package/storage-emitter)
 
 > Emit events between browser tabs.
 
