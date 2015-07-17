@@ -39,4 +39,4 @@ emitter.emit('my-event', { message: 'hello from another tab' })
 
 ## License
 
-MIT
+[MIT]('./LICENSE')
