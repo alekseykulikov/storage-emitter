@@ -7,7 +7,7 @@
 > Emit events between browser tabs.
 
 It works like a regular instance of [EventEmitter](https://github.com/component/emitter),
-with the only difference that event will be fired in all open tabs.
+with the only difference that event is fired in all open tabs (even with different urls, but the same domain).
 
 It's a tiny wrapper around
 [`window.onstorage`](http://www.w3.org/TR/webstorage/#the-storage-event) event,
@@ -16,7 +16,7 @@ which is a part of WebStorage specification and available in IE8+ browsers.
 Possible applications:
 
 - perform **logout** in all open tabs
-- sync in-memory objects between browser tabs
+- sync in-memory objects between browser tabs, like [swarm.js](https://github.com/gritzko/swarm#storages)
 - polyfill indexeddb.onversionchange event in [Safari](https://bugs.webkit.org/show_bug.cgi?id=136155)
 
 ## Installation
