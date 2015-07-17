@@ -54,9 +54,9 @@ sEmitter.emit('logout', { message: 'hello from another tab' })
 
 Subscribe on `event` across all open application instances.
 
-### sEmitter.emit(event, opts)
+### sEmitter.emit(event, args)
 
-Emit `event` with `opts` to all open tabs.
+Emit `event` with `args` to all open tabs.
 
 ### sEmitter.off([event])
 

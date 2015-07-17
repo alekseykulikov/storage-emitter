@@ -16,4 +16,12 @@ describe('storage-emitter', function() {
     })
     sEmitter.emit('greeting', msg)
   })
+
+  it('emits without arguments', function(done) {
+    sEmitter.on('hi', function(val) {
+      expect(val).undefined
+      done()
+    })
+    sEmitter.emit('hi')
+  })
 })
