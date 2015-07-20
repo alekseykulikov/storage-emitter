@@ -16,7 +16,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "browserify-test",
+    "test": "jshint lib/ test/ && browserify-test",
     "build": "browserify -s sEmitter ./lib/index.js -o ./dist/storage-emitter.js",
     "development": "browserify-test --watch"
   },
@@ -26,6 +26,7 @@
   "devDependencies": {
     "browserify": "^11.0.0",
     "browserify-test": "^1.3.0",
-    "chai": "^3.1.0"
+    "chai": "^3.1.0",
+    "jshint": "^2.8.0"
   }
 }

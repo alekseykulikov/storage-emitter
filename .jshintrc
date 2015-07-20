@@ -1,0 +1,11 @@
+{
+  "freeze": true,
+  "unused": true,
+  "undef": true,
+  "asi": true,
+  "expr": true,
+  "laxbreak": true,
+  "mocha": true,
+  "node": true,
+  "browser": true
+}
