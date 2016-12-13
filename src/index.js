@@ -21,7 +21,7 @@ const sEmitter = new Emitter()
 * @param {StorageEvent} e { key, newValue }
 */
 
-global.addEventListener('storage', function onStorage (e) {
+window.addEventListener('storage', function onStorage (e) {
   if (e.key !== KEY) return // ignore other keys
   if (!e.newValue) return // removeItem
   try {
