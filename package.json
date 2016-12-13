@@ -10,12 +10,16 @@
     "dist"
   ],
   "scripts": {
+    "prepublish": "babel src --out-dir dist",
     "test": "eslint src test"
   },
   "dependencies": {
     "component-emitter": "^1.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-preset-latest": "^6.16.0",
     "chai": "^3.1.0",
     "eslint": "^3.12.1",
     "eslint-config-standard": "^6.2.1",
