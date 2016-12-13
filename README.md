@@ -23,15 +23,6 @@ Possible applications:
 
     npm install --save storage-emitter
 
-Or use standalone build [dist/storage-emitter.js](./dist/storage-emitter.js).
-
-```html
-<script src="storage-emitter.js"></script>
-<script>
-  window.sEmitter.emit('greeting', { message: 'I am open!' })
-</script>
-```
-
 ## Example
 
 ```js
