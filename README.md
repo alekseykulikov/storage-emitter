@@ -6,38 +6,39 @@
 
 > Emit events between browser tabs.
 
-It works like a regular instance of [EventEmitter](https://github.com/component/emitter),
-with the only difference that event is fired in all open tabs (even with different urls, but the same domain).
-
-It's a tiny wrapper around
+It's a small wrapper around
 [`window.onstorage`](http://www.w3.org/TR/webstorage/#the-storage-event) event,
 which is a part of WebStorage specification and available in IE8+ browsers.
+
+It works like a regular instance of [EventEmitter](https://github.com/component/emitter),
+with the only difference that event is fired in all open tabs for same domain.
 
 Possible applications:
 
 - perform **logout** in all open tabs
 - sync in-memory objects between browser tabs, like [swarm.js](https://github.com/gritzko/swarm#storages)
-- polyfill indexeddb.onversionchange event in [Safari](https://bugs.webkit.org/show_bug.cgi?id=136155)
-
-## Installation
-
-    npm install --save storage-emitter
+- polyfill `indexeddb.onversionchange` event in [Safari](https://bugs.webkit.org/show_bug.cgi?id=136155)
 
 ## Example
 
 ```js
-var sEmitter = require('storage-emitter') // or window.sEmitter
+import sEmitter from 'storage-emitter'
 
 // listen to "logout" event
 
-sEmitter.on('logout', function(e) {
-  console.log(e) // { message: 'hello from another tab' }
+sEmitter.on('logout', () =>
+  location.reload()
 })
 
-// call it from another tab
+// call "logout" from another tab
 
-sEmitter.emit('logout', { message: 'hello from another tab' })
+sEmitter.emit('logout')
 ```
+
+## Installation
+
+    $ yarn add storage-emitter
+    $ npm i -S storage-emitter
 
 ## API
 
