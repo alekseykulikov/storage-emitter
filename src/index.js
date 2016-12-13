@@ -1,17 +1,18 @@
-var Emitter = require('component-emitter')
-var emit = Emitter.prototype.emit
+/* eslint-env browser */
+import Emitter from 'component-emitter'
+const emit = Emitter.prototype.emit
 
 /**
  * Use communication `KEY` to ignore other localStorage changes.
  */
 
-var KEY = '!!storage-emitter-key'
+const KEY = '!!storage-emitter-key'
 
 /**
  * Initialize an `Emitter` instance.
  */
 
-var sEmitter = new Emitter()
+const sEmitter = new Emitter()
 
 /**
 * Register `storage` event listener to DefaultView<window> target.
@@ -20,15 +21,15 @@ var sEmitter = new Emitter()
 * @param {StorageEvent} e { key, newValue }
 */
 
-global.addEventListener('storage', function onStorage(e) {
-  if (e.key != KEY) return // ignore other keys
+global.addEventListener('storage', function onStorage (e) {
+  if (e.key !== KEY) return // ignore other keys
   if (!e.newValue) return // removeItem
   try {
     var cmd = JSON.parse(e.newValue)
-    sEmitter.listeners(cmd.event).forEach(function(callback) {
+    sEmitter.listeners(cmd.event).forEach((callback) => {
       callback.call(sEmitter, cmd.args)
     })
-  } catch(err) {
+  } catch (err) {
     console.error('unexpected value: ' + err.newValue)
   }
 }, false)
@@ -41,7 +42,7 @@ global.addEventListener('storage', function onStorage(e) {
  * @return {StorageEmitter}
  */
 
-sEmitter.emit = function(event, args) {
+sEmitter.emit = function (event, args) {
   var cmd = JSON.stringify({ event: event, args: args })
   localStorage.setItem(KEY, cmd)
   localStorage.removeItem(KEY)
@@ -52,4 +53,4 @@ sEmitter.emit = function(event, args) {
  * Expose `sEmitter`.
  */
 
-module.exports = sEmitter
+export default sEmitter
