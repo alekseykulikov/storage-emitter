@@ -16,7 +16,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "jshint lib/ test/ && browserify-test",
+    "test": "eslint src test"
   },
   "dependencies": {
     "component-emitter": "^1.2.0"
@@ -24,6 +24,10 @@
   "devDependencies": {
     "browserify-test": "^1.3.0",
     "chai": "^3.1.0",
-    "jshint": "^2.8.0"
+    "eslint": "^3.12.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
   }
 }

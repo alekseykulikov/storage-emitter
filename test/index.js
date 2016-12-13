@@ -1,24 +1,25 @@
-var expect = require('chai').expect
-var sEmitter = require('../lib')
+/* eslint-env mocha */
+import { expect } from 'chai'
+import sEmitter from '../src'
 
-describe('storage-emitter', function() {
-  it('has EventEmitter methods', function() {
+describe('storage-emitter', () => {
+  it('has EventEmitter methods', () => {
     expect(sEmitter.on).a('function')
     expect(sEmitter.emit).a('function')
     expect(sEmitter.off).a('function')
   })
 
-  it('emits events like regular EventEmitter', function(done) {
-    var msg = { message: 'Hello world' }
-    sEmitter.on('greeting', function(val) {
+  it('emits events like regular EventEmitter', (done) => {
+    const msg = { message: 'Hello world' }
+    sEmitter.on('greeting', (val) => {
       expect(val).eql(msg)
       done()
     })
     sEmitter.emit('greeting', msg)
   })
 
-  it('emits without arguments', function(done) {
-    sEmitter.on('hi', function(val) {
+  it('emits without arguments', (done) => {
+    sEmitter.on('hi', (val) => {
       expect(val).undefined
       done()
     })
