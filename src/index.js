@@ -9,10 +9,18 @@ const emit = Emitter.prototype.emit
 const KEY = '!!storage-emitter-key'
 
 /**
+ * Use `TEST_KEY` to detect private browsing mode
+ */
+
+const TEST_KEY = '!!storage-emitter-key-test'
+
+/**
  * Initialize an `Emitter` instance.
  */
 
 const sEmitter = new Emitter()
+
+const isLocalStorageAvailable = !isPrivateBrowsingMode()
 
 /**
 * Register `storage` event listener to DefaultView<window> target.
@@ -25,7 +33,7 @@ window.addEventListener('storage', function onStorage (e) {
   if (e.key !== KEY) return // ignore other keys
   if (!e.newValue) return // removeItem
   try {
-    var cmd = JSON.parse(e.newValue)
+    const cmd = JSON.parse(e.newValue)
     sEmitter.listeners(cmd.event).forEach((callback) => {
       callback.call(sEmitter, cmd.args)
     })
@@ -43,10 +51,28 @@ window.addEventListener('storage', function onStorage (e) {
  */
 
 sEmitter.emit = function (event, args) {
-  var cmd = JSON.stringify({ event: event, args: args })
-  localStorage.setItem(KEY, cmd)
-  localStorage.removeItem(KEY)
+  if (isLocalStorageAvailable) {
+    const cmd = JSON.stringify({ event, args })
+    localStorage.setItem(KEY, cmd)
+    localStorage.removeItem(KEY)
+  }
   return emit.apply(this, arguments)
+}
+
+/**
+ * Check browser is in private browsing mode or not
+ *
+ * @return {Boolean}
+ */
+
+function isPrivateBrowsingMode () {
+  try {
+    localStorage.setItem(TEST_KEY, '1')
+    localStorage.removeItem(TEST_KEY)
+    return false
+  } catch (error) {
+    return true
+  }
 }
 
 /**
